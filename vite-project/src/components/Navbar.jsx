@@ -5,10 +5,17 @@ const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+ const logout = async () => {
+  try {
+    await API.post("/auth/logout"); // tell backend to clear session
+  } catch (err) {
+    console.warn("Logout session error:", err);
+  }
+
+  localStorage.removeItem("token"); // remove user token
+  navigate("/login");
+};
+
 
   return (
     <nav className="bg-white shadow p-4 flex justify-between items-center">
