@@ -65,7 +65,7 @@ export const loginUser = async (req, res) => {
 };
 export const logoutUser = (req, res) => {
    req.session.destroy(() => {
-    res.clearCookie("connect.sid"); // remove session cookie
+    res.clearCookie("connect.sid"); 
     res.json({ message: "Session ended" });
   });
   // If you are not using session, still return success
