@@ -1,9 +1,9 @@
 import Product from "../models/productModel.js";
 
-export const createProduct = async (req, res) => {
+export const createProduct =  (req, res) => {
   try {
     const product = new Product(req.body);
-    await product.save();
+     product.save();
     res.json({ message: "Product created", product });
   } catch (err) {
     res.status(500).json({ error: err.message });
